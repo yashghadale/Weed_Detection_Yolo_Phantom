@@ -22,9 +22,9 @@ __all__ = (
     "GhostConv",
     "Index",
     "LightConv",
+    "PhantomConv",
     "RepConv",
     "SpatialAttention",
-    "PhantomConv",
 )
 
 
@@ -714,7 +714,8 @@ class Index(nn.Module):
         """
         return x[self.index]
 
-class PhantomConv(nn.Module): # # added PhantomConv here
+
+class PhantomConv(nn.Module):  # # added PhantomConv here
     """Faster version of Ghost Convolution https://github.com/huawei-noah/ghostnet."""
 
     def __init__(self, c1, c2, k=1, s=1, g=1, act=True):
@@ -723,8 +724,9 @@ class PhantomConv(nn.Module): # # added PhantomConv here
         """
         super().__init__()
         c_ = c2 // 2  # hidden channels
-        self.cv1 = Conv(c1, c_, 5, s, None, 4,
-                        act=act)  # Used group Conv with g = 4 and Increased kernel size (k) from 1 to 5
+        self.cv1 = Conv(
+            c1, c_, 5, s, None, 4, act=act
+        )  # Used group Conv with g = 4 and Increased kernel size (k) from 1 to 5
         self.cv2 = DWConv(c_, c_, 5)  # Used Depth Wise Separable Convolution and Increased kernel size (k) from 1 to 5
 
     def forward(self, x):

@@ -73,9 +73,9 @@ from .conv import (
     GhostConv,
     Index,
     LightConv,
+    PhantomConv,
     RepConv,
     SpatialAttention,
-    PhantomConv,
 )
 from .head import (
     OBB,
@@ -161,6 +161,7 @@ __all__ = (
     "MLPBlock",
     "MSDeformAttn",
     "MaxSigmoidAttnBlock",
+    "PhantomConv",
     "Pose",
     "Proto",
     "RTDETRDecoder",
@@ -180,5 +181,4 @@ __all__ = (
     "YOLOEDetect",
     "YOLOESegment",
     "v10Detect",
-    "PhantomConv",
 )
